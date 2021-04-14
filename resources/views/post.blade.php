@@ -1,4 +1,4 @@
-<x-layout>
+
     <article>
         <h1><?=$post->title;?></h1>
 
@@ -9,4 +9,4 @@
     </article>
 
     <a href="/">Back Home</a>
-</x-layout>>
+
