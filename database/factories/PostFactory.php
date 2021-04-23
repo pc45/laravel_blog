@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
@@ -21,21 +23,13 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-
-        $paragraphs = $this->faker->paragraphs(rand(2, 6));
-
-        foreach($paragraphs as $paragraph){
-            $this->toInsert .=  $paragraph;
-        }
-
-
-
         return [
-            'title' => $this->faker->text(40),
+            'title' => $this->faker->sentence,
             'slug' => $this->faker->slug(3),
             'excerpt' => $this->faker->sentence(rand(5,10)),
-            'body' =>  $this->toInsert,
-            'category_id' => rand(1,3),
+            'body' =>  $this->faker->paragraph,
+            'category_id' => Category::factory(),
+            'user_id'=>User::factory(),
         ];
     }
 }
